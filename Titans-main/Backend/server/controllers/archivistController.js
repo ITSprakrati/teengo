@@ -30,8 +30,22 @@ export const ingestAsset = async (req, res) => {
       jobId, assetId: asset._id, stage: "downloading", message: "Downloading official video...",
     });
 
-    // Kick off async ingest on FastAPI — returns immediately
-    await fastapiClient.post("/ingest", { official_video_url, job_id: jobId, video_title });
+    // Kick off async ingest on FastAPI — retries if ML engine is waking up on Render
+    let posted = false;
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        await fastapiClient.post("/ingest", { official_video_url, job_id: jobId, video_title });
+        posted = true;
+        break;
+      } catch (postErr) {
+        if (attempt === 3) throw postErr;
+        io.emit("ingest:progress", {
+          jobId, assetId: asset._id, stage: "downloading",
+          message: `ML Engine waking up from sleep (attempt ${attempt}/3)...`,
+        });
+        await new Promise((r) => setTimeout(r, 4000));
+      }
+    }
 
     // Poll FastAPI for status every 10s (max 35 min)
     const MAX_POLLS = 210;  // 210 × 10s = 35 min

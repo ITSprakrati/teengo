@@ -34,7 +34,7 @@ global.redisClient = redis;
 
 const app = express();
 const httpServer = createServer(app);
-const PORT = process.env.NODE_PORT || process.env.PORT || 8000;
+const PORT = process.env.PORT || process.env.NODE_PORT || 8000;
 
 initSocket(httpServer);
 
@@ -94,8 +94,8 @@ app.all("*", (_req, _res, next) => {
 
 app.use(errorHandler);
 
-httpServer.listen(PORT, () => {
-  console.log(`🛡️  SportsGuard AI running on http://localhost:${PORT}`);
+httpServer.listen(PORT, "0.0.0.0", () => {
+  console.log(`🛡️  SportsGuard AI running on http://0.0.0.0:${PORT}`);
 });
 
 // ── Render free tier keepalive ────────────────────────────────────────────────
