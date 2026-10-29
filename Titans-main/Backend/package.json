@@ -1,0 +1,12 @@
+{
+  "name": "sportsguard-backend-root",
+  "version": "1.0.0",
+  "description": "SportsGuard AI Backend Root Proxy",
+  "main": "server/app.js",
+  "scripts": {
+    "start": "cd server && node app.js",
+    "build": "cd server && npm install",
+    "dev": "cd server && node app.js",
+    "preview": "cd server && node app.js"
+  }
+}
