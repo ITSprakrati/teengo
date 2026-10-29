@@ -1,0 +1,41 @@
+services:
+  # ── 1. Node.js API Orchestrator (Free Web Service) ─────────────────────────
+  - type: web
+    name: mediaguard-backend
+    runtime: docker
+    plan: free
+    rootDir: Titans-main/Backend
+    dockerfilePath: ./Dockerfile.node
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_PORT
+        value: 8000
+
+  # ── 2. FastAPI ML Engine (Free Web Service - Low Memory Mode) ──────────────
+  - type: web
+    name: mediaguard-ml-engine
+    runtime: docker
+    plan: free
+    rootDir: Titans-main/Backend
+    dockerfilePath: ./Dockerfile.fastapi
+    envVars:
+      - key: PORT
+        value: 8001
+      - key: CLIP_BATCH_SIZE
+        value: 2
+      - key: MALLOC_ARENA_MAX
+        value: 2
+
+  # ── 3. React Frontend (Free Static Site - 0 Sleep, Unlimited Build) ───────
+  - type: web
+    name: mediaguard-frontend
+    runtime: static
+    plan: free
+    rootDir: Titans-main/Frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
