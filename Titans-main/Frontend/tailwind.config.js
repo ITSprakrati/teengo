@@ -31,8 +31,7 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        dancing: ['"Dancing Script"', 'cursive', 'sans-serif'],
+        sans: ["'Google Sans'", 'sans-serif'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
