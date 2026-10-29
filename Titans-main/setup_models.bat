@@ -1,6 +1,6 @@
 @echo off
 REM ═══════════════════════════════════════════════════════════════════════════════
-REM MediaGuard — Download, Generate, and Upload ALL Model Files
+REM SportsGuard AI — Download, Generate, and Upload ALL Model Files
 REM ═══════════════════════════════════════════════════════════════════════════════
 REM
 REM Steps:

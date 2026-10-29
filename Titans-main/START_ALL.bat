@@ -1,6 +1,6 @@
 @echo off
 echo ============================================
-echo   MediaGuard Sports — Start All Services
+echo   SportsGuard AI — Start All Services
 echo ============================================
 echo.
 

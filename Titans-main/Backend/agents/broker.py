@@ -163,13 +163,13 @@ def deploy_contract(
     except Exception as e:
         logger.warning(f"[Broker] LLM call failed ({e}) — generating deterministic smart contract data.")
         contract_data = {
-            "contract_title": f"MediaGuard Fair-Use Revenue Share ({tier} Tier)",
+            "contract_title": f"SportsGuard AI Fair-Use Revenue Share ({tier} Tier)",
             "copyright_holder_share": holder_share,
             "creator_share": creator_share,
             "duration_months": 12,
             "payment_schedule": "monthly",
             "terms": f"Authorized revenue-sharing agreement for transformative derivative content on {platform}. Split: {holder_share}% rights holder, {creator_share}% creator.",
-            "dispute_resolution": "Binding online arbitration via MediaGuard protocol.",
+            "dispute_resolution": "Binding online arbitration via SportsGuard AI protocol.",
             "estimated_monthly_revenue_usd": estimated_revenue,
             "ip_holder_monthly_cut_usd": round(estimated_revenue * (holder_share / 100.0), 2),
             "network": "Polygon (Mock)",

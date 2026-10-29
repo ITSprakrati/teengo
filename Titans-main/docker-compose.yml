@@ -6,7 +6,7 @@ services:
     build:
       context: ./Backend
       dockerfile: Dockerfile.fastapi
-    container_name: mediaguard-ml-engine
+    container_name: sportsguard-ml-engine
     restart: unless-stopped
     ports:
       - "8001:8001"
@@ -38,7 +38,7 @@ services:
     build:
       context: ./Backend
       dockerfile: Dockerfile.node
-    container_name: mediaguard-node-backend
+    container_name: sportsguard-node-backend
     restart: unless-stopped
     ports:
       - "8000:8000"
@@ -63,7 +63,7 @@ services:
       dockerfile: Dockerfile
       args:
         - VITE_API_URL=http://localhost:8000
-    container_name: mediaguard-frontend
+    container_name: sportsguard-frontend
     restart: unless-stopped
     ports:
       - "5173:80"
@@ -73,7 +73,7 @@ services:
   # ── 4. MongoDB Database ───────────────────────────────────────────────────
   mongo:
     image: mongo:7.0
-    container_name: mediaguard-mongo
+    container_name: sportsguard-mongo
     restart: unless-stopped
     ports:
       - "27017:27017"
@@ -83,7 +83,7 @@ services:
   # ── 5. Redis Cache / PubSub ───────────────────────────────────────────────
   redis:
     image: redis:7-alpine
-    container_name: mediaguard-redis
+    container_name: sportsguard-redis
     restart: unless-stopped
     ports:
       - "6379:6379"

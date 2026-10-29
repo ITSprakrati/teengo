@@ -123,7 +123,7 @@ const HeroSection = ({ onLaunch }) => (
           className="font-black text-slate-900 tracking-tight leading-[0.92] mb-5"
           style={{ fontSize: 'clamp(2.8rem, 5.5vw, 4.2rem)' }}
         >
-          VideoGuard<br />AI<br />
+          SportsGuard<br />AI<br />
           <FlipWords />
         </motion.h1>
 

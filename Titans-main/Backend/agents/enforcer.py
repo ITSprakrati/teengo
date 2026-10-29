@@ -135,7 +135,7 @@ def issue_dmca(
 
         notice_text = (
             f"TO: {legal_contact} ({platform} Copyright Agent)\n"
-            f"FROM: MediaGuard IP Protection Unit (on behalf of Authorized Rights Holder)\n"
+            f"FROM: SportsGuard AI IP Protection Unit (on behalf of Authorized Rights Holder)\n"
             f"DATE: {date_str}\n"
             f"RE: DMCA Copyright Infringement Notice — 17 U.S.C. § 512(c)\n\n"
             f"Dear Designated Agent,\n\n"
@@ -153,8 +153,8 @@ def issue_dmca(
             f"I have a good faith belief that the use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law.\n"
             f"The information in this notification is accurate, and under penalty of perjury, I am authorized to act on behalf of the copyright owner.\n\n"
             f"Sincerely,\n"
-            f"MediaGuard Automated IP Rights Enforcer\n"
-            f"ip-enforce@mediaguard.internal"
+            f"SportsGuard AI Automated IP Rights Enforcer\n"
+            f"ip-enforce@sportsguard.internal"
         )
 
     tier = "standard"

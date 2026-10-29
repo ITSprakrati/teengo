@@ -1,7 +1,7 @@
 services:
   # ── 1. Node.js API Orchestrator (Free Web Service) ─────────────────────────
   - type: web
-    name: mediaguard-backend
+    name: sportsguard-backend
     runtime: docker
     plan: free
     rootDir: Titans-main/Backend
@@ -14,7 +14,7 @@ services:
 
   # ── 2. FastAPI ML Engine (Free Web Service - Low Memory Mode) ──────────────
   - type: web
-    name: mediaguard-ml-engine
+    name: sportsguard-ml-engine
     runtime: docker
     plan: free
     rootDir: Titans-main/Backend
@@ -29,7 +29,7 @@ services:
 
   # ── 3. React Frontend (Free Static Site - 0 Sleep, Unlimited Build) ───────
   - type: web
-    name: mediaguard-frontend
+    name: sportsguard-frontend
     runtime: static
     plan: free
     rootDir: Titans-main/Frontend

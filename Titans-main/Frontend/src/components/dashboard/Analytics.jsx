@@ -169,7 +169,7 @@ const Analytics = () => {
             ⚡ Intelligence Analytics
           </h2>
           <p style={{ fontSize: 12, color: G.sub, margin: '3px 0 0' }}>
-            VideoGuard detection metrics · Live from swarm agents
+            SportsGuard AI detection metrics · Live from swarm agents
           </p>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>

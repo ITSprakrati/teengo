@@ -1,4 +1,4 @@
-# MediaGuard Sports - Python Requirements
+# SportsGuard AI - Python Requirements
 # Fixed for Python 3.14 compatibility (all packages use pre-built cp314 wheels)
 
 fastapi==0.115.6

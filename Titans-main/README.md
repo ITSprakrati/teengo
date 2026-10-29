@@ -1,6 +1,6 @@
-# VideoGuard AI — Autonomous Video IP Protection Platform
+# SportsGuard AI — Autonomous Video IP Protection Platform
 
-> **VideoGuard AI** is a production-ready, six-agent AI swarm that autonomously hunts pirated video content across the internet, classifies each incident under IP law, and either dispatches a DMCA takedown or deploys a revenue-sharing smart contract — with human approval required only at the final step.
+> **SportsGuard AI** is a production-ready, six-agent AI swarm that autonomously hunts pirated video content across the internet, classifies each incident under IP law, and either dispatches a DMCA takedown or deploys a revenue-sharing smart contract — with human approval required only at the final step.
 
 ---
 
@@ -24,7 +24,7 @@
 
 ## Overview
 
-VideoGuard AI automates the full lifecycle of video copyright enforcement:
+SportsGuard AI automates the full lifecycle of video copyright enforcement:
 
 1. **Ingest** — Register official content into a FAISS fingerprint vault (1 frame extracted per 30 seconds, embedded via CLIP ViT-B/32)
 2. **Hunt** — Spider agent crawls YouTube and other platforms using AI-generated OSINT queries

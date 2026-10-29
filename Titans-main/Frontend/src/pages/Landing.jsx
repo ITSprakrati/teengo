@@ -251,7 +251,7 @@ const Hero = ({ onLaunch }) => (
           transition={{ delay: 0.08, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           className="font-black text-slate-900 tracking-tight leading-[0.9] mb-5"
           style={{ fontSize: 'clamp(2.8rem, 5.5vw, 4.2rem)' }}>
-          VideoGuard<br />AI<br />
+          SportsGuard<br />AI<br />
           <span className="text-teal-600"
             style={{ textDecoration: 'underline', textDecorationColor: '#FFC81E', textDecorationThickness: '4px', textUnderlineOffset: '7px' }}>
             <FlipWords words={WORDS} />
@@ -925,7 +925,7 @@ const Landing = () => {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
             <Shield className="w-4 h-4 text-teal-600" />
-            <span className="text-sm font-black text-slate-900">VideoGuard<span className="text-teal-600">AI</span></span>
+            <span className="text-sm font-black text-slate-900">SportsGuard<span className="text-teal-600"> AI</span></span>
           </div>
           <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.28em]">
             © 2026 · Autonomous IP Intelligence · Global Protection Protocol

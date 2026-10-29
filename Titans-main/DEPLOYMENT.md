@@ -1,4 +1,4 @@
-# MediaGuard Sports — Deployment Guide (Fully Free)
+# SportsGuard AI — Deployment Guide (Fully Free)
 
 ## Deployment Strategy
 

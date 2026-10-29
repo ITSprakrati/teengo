@@ -65,7 +65,7 @@ function buildSentinelReport(scan, node) {
 
   // Primary classification
   if (scan.match_confirmed) {
-    lines.push(`[CRITICAL ANOMALY DETECTED] MediaGuard Sentinel has confirmed this as a piracy match.`);
+    lines.push(`[CRITICAL ANOMALY DETECTED] SportsGuard AI Sentinel has confirmed this as a piracy match.`);
   } else if ((scan.confidence_score || 0) >= PIRACY_CONFIRM_THRESHOLD) {
     lines.push(`[HIGH CONFIDENCE SUSPECT] Strong signals of copyright infringement detected.`);
   } else {
@@ -731,7 +731,7 @@ export const runSwarm = async (req, res) => {
             platform:       node.platform || "YouTube",
             video_title:    node.title || "Unknown",
             video_url:      node.url || "",
-            justification:  verdict.justification || "Fair use content identified by MediaGuard.",
+            justification:  verdict.justification || "Fair use content identified by SportsGuard AI.",
             view_count:     node.view_count || 0,
             risk_score:     verdict.risk_score || 30,
           });

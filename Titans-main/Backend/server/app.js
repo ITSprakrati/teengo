@@ -59,7 +59,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (_req, res) => {
   res.json({
-    status: "VideoGuard AI API is Online and Listening.",
+    status: "SportsGuard AI API is Online and Listening.",
     redis:  isRedisAvailable() ? "connected" : "unavailable",
   });
 });
@@ -95,7 +95,7 @@ app.all("*", (_req, _res, next) => {
 app.use(errorHandler);
 
 httpServer.listen(PORT, () => {
-  console.log(`🛡️  VideoGuard AI running on http://localhost:${PORT}`);
+  console.log(`🛡️  SportsGuard AI running on http://localhost:${PORT}`);
 });
 
 // ── Render free tier keepalive ────────────────────────────────────────────────

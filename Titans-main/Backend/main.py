@@ -40,7 +40,7 @@ from agents.evidence_vault import store_json_artifact as _store_evidence
 import tempfile
 import pathlib
 
-app = FastAPI(title="VideoGuard AI ML API")
+app = FastAPI(title="SportsGuard AI ML API")
 
 app.add_middleware(
     CORSMiddleware,
@@ -52,7 +52,7 @@ app.add_middleware(
 
 @app.get("/")
 def root_health():
-    return {"status": "ok", "service": "VideoGuard AI ML Engine", "version": "1.0.0"}
+    return {"status": "ok", "service": "SportsGuard AI ML Engine", "version": "1.0.0"}
 
 # ─── Core Request Models ───────────────────────────────────────────────────────
 class IngestRequest(BaseModel):
@@ -157,7 +157,7 @@ _setup_cookies()
 # File-backed so jobs survive server restarts / process crashes.
 # Use tempfile.gettempdir() to get OS-appropriate temp dir (works on Windows/Linux/Mac).
 import tempfile
-_JOBS_DIR = os.path.join(tempfile.gettempdir(), "mediaguard_jobs")
+_JOBS_DIR = os.path.join(tempfile.gettempdir(), "sportsguard_jobs")
 os.makedirs(_JOBS_DIR, exist_ok=True)
 
 def _job_path(job_id: str) -> str:

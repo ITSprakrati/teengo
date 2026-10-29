@@ -79,7 +79,7 @@ const Sidebar = () => {
                   <Shield size={17} style={{ color: G.teal }} />
                 </div>
                 <div>
-                  <p style={{ fontSize: '0.88rem', fontWeight: 800, color: G.text, margin: 0, lineHeight: 1 }}>VideoGuard</p>
+                  <p style={{ fontSize: '0.88rem', fontWeight: 800, color: G.text, margin: 0, lineHeight: 1 }}>SportsGuard AI</p>
                   <p style={{ fontSize: '0.6rem', color: G.sub, margin: '2px 0 0' }}>AI Control Center</p>
                 </div>
               </NavLink>
