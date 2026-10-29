@@ -714,10 +714,14 @@ def tool_ingest_video(video_path: str) -> str:
     else:
         fps          = cap.get(cv2.CAP_PROP_FPS) or 25.0
         total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-        SAMPLE_INTERVAL = max(1, int(fps * INGEST_SAMPLE_SEC))
+        total_duration_sec = total_frames / fps if fps > 0 else 0
+        # Adapt sample interval dynamically: for long videos use INGEST_SAMPLE_SEC (30s),
+        # but for short reels / sports clips (<30s), sample every 1-2s so short reels are never skipped!
+        effective_sample_sec = min(INGEST_SAMPLE_SEC, max(1.0, total_duration_sec / 15.0)) if total_duration_sec > 0 else INGEST_SAMPLE_SEC
+        SAMPLE_INTERVAL = max(1, int(fps * effective_sample_sec))
 
-        total_samples = int(total_frames / SAMPLE_INTERVAL) if SAMPLE_INTERVAL > 0 else 0
-        print(f"[Archivist] Seek-sampling {total_samples} positions ({INGEST_SAMPLE_SEC}s intervals)")
+        total_samples = max(1, int(total_frames / SAMPLE_INTERVAL)) if total_frames > 0 else 0
+        print(f"[Archivist] Seek-sampling {total_samples} positions ({effective_sample_sec:.1f}s intervals, duration={total_duration_sec:.1f}s)")
         prev_hist = None
 
         for sample_idx in range(total_samples):
@@ -759,16 +763,15 @@ def tool_ingest_video(video_path: str) -> str:
         _flush_batch()
 
     # ── Minimum Frame Guarantee ───────────────────────────────────────────────
-    # If scene detection found too few frames (< 10 for a video > 30s),
-    # force-sample at regular intervals. This handles music videos,
-    # single-shot content, and very consistent visual styles.
-    MIN_FRAMES = 10
-    duration_sec = frame_id / fps if fps > 0 else 0
+    # If scene detection found too few frames (< 10 for long, or < 3 for short reels),
+    # force-sample at regular intervals.
+    MIN_FRAMES = min(10, max(2, int(total_duration_sec / 2.0))) if total_duration_sec > 0 else 5
+    duration_sec = total_duration_sec if total_duration_sec > 0 else (frame_id / fps if fps > 0 else 0)
 
-    if extracted_count < MIN_FRAMES and duration_sec > 30:
-        print(f"[Archivist] Only {extracted_count} scenes found — forcing uniform sampling for {duration_sec:.0f}s video")
+    if extracted_count < MIN_FRAMES and duration_sec > 0:
+        print(f"[Archivist] Only {extracted_count} scenes found — forcing uniform sampling for {duration_sec:.1f}s video")
         # Force-sample every N seconds to get at least MIN_FRAMES
-        force_interval_sec = duration_sec / MIN_FRAMES
+        force_interval_sec = max(0.2, duration_sec / MIN_FRAMES)
         cap2 = cv2.VideoCapture(video_path) if cv2 is not None else None
         if cap2 and cap2.isOpened():
             for i in range(MIN_FRAMES):

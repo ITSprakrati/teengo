@@ -897,10 +897,13 @@ def ingest_asset(payload: IngestRequest, background_tasks: BackgroundTasks):
                                 _write_job(job_id, {"status": "downloading", "message": f"Capturing {seg_sec}s broadcast segment for fingerprinting..."})
                     except Exception as meta_e:
                         print(f"[Ingest] Meta pre-check note: {meta_e}")
-                    # YouTube cookie authentication — only if cookiefile exists or explicitly set
-                    if os.path.exists(COOKIES_PATH):
-                        ydl_opts["cookiefile"] = COOKIES_PATH
-                    elif os.environ.get("YT_COOKIES_BROWSER"):
+                    # Cookie authentication — checks Instagram, YouTube, Facebook, and generic cookie files
+                    for cfile in ["ig_cookies.txt", "instagram_cookies.txt", "yt_cookies.txt", "cookies.txt"]:
+                        cp = os.path.join(os.path.dirname(__file__), cfile)
+                        if os.path.exists(cp):
+                            ydl_opts["cookiefile"] = cp
+                            break
+                    if "cookiefile" not in ydl_opts and os.environ.get("YT_COOKIES_BROWSER"):
                         ydl_opts["cookiesfrombrowser"] = (os.environ["YT_COOKIES_BROWSER"],)
 
                     try:
