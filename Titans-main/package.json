@@ -1,0 +1,8 @@
+{
+  "name": "sportsguard-root",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd Backend/server && npm install",
+    "start": "cd Backend/server && node app.js"
+  }
+}

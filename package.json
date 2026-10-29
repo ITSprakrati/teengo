@@ -1,0 +1,8 @@
+{
+  "name": "sportsguard-git-root",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd Titans-main/Backend/server && npm install",
+    "start": "cd Titans-main/Backend/server && node app.js"
+  }
+}
